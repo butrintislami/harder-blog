@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ControllerRegister;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\RepliesController;
@@ -22,7 +23,13 @@ Route::post('login',[ControllerRegister::class,'login'])->name('login');
 
 
 
-Route::middleware('auth:api')->group( function(){
+Route::post('admin/register',[AdminController::class,'register']);
+Route::post('admin/login',[AdminController::class,'login']);
+
+
+
+//Route::middleware('auth:api')->group( function(){
+Route::middleware('auth')->group( function(){
 
         Route::get('posts',[PostsController::class,'index']);
         Route::get('posts/{id}',[PostsController::class,'update']);
@@ -30,5 +37,7 @@ Route::middleware('auth:api')->group( function(){
         Route::delete('posts/{id}',[PostsController::class,'destroy']);
         Route::put('posts/{id}',[PostsController::class,'update']);
         Route::post('posts/{id}/comment',[Repliescontroller::class,'store']);
+
+//        Admin Routes
 
 });

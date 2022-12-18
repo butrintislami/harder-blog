@@ -45,6 +45,13 @@ return [
             'provider'=>'users',
             'hash'=>'false',
         ],
+
+        'admin'=>[
+            'driver'=>'jwt',
+            'provider'=>'admins',
+            'hash'=>'false',
+        ],
+
     ],
 
     /*
