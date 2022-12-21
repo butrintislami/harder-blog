@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-
-class Admin extends Authenticatable implements JWTSubject
+class Instructor extends Authenticatable implements JWTSubject
 {
-    use HasFactory,Notifiable;
+    use HasFactory;
 
-    protected $table ='admins';
+    protected $table ='instructors';
 
     protected $fillable = [
         'name',
@@ -28,14 +26,22 @@ class Admin extends Authenticatable implements JWTSubject
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+   public function courses(){
+       return $this->hasMany(Course::class);
+   }
+
+   public function threads(){
+       return $this->hasMany(Threads::class);
+   }
+
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+
 
     public function getJWTIdentifier()
     {

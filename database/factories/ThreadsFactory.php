@@ -2,13 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Instructor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
+
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Posts>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Threads>
  */
-class PostsFactory extends Factory
+class ThreadsFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +18,9 @@ class PostsFactory extends Factory
      */
     public function definition()
     {
-        $user_id = User::pluck('id')->toArray();
+        $instructor_id = Instructor::pluck('id')->toArray();
         return [
-            'user_id'=> Arr::random($user_id),
+            'instructor_id'=> Arr::random($instructor_id),
             'title'=> $this->faker->sentence(),
             'description'=>$this->faker->paragraph(4),
 

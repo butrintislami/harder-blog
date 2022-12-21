@@ -10,14 +10,14 @@ class Replies extends Model
     use HasFactory;
 
     protected $fillable = [
-        'post_id',
+        'thread_id',
         'user_id',
         'comment',
 
     ];
 
-    public function post(){
-        return $this->belongsTo(Posts::class);
+    public function thread(){
+        return $this->belongsTo(Threads::class);
     }
     public function user(){
         return $this->belongsTo(User::class);

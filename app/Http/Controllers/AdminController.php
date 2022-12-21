@@ -36,7 +36,7 @@ class AdminController extends Controller
     public function login(Request $request)
     {
         $creds = $request->only(['email','password']);
-        if (!$token=auth()->attempt($creds)){
+        if (!$token=auth()->guard('admin')->attempt($creds)){
             return response()->json([
                 'success'=>false,
                 'message'=>'information is not correct'
@@ -45,7 +45,7 @@ class AdminController extends Controller
         return response()->json([
             'success'=>true,
             'token'=>$token,
-            'user'=>Auth::user()
+            'admin'=>Auth::guard('admin')->user()
         ],Response::HTTP_OK);
 
     }

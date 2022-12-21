@@ -27,11 +27,14 @@ Route::post('admin/register',[AdminController::class,'register']);
 Route::post('admin/login',[AdminController::class,'login']);
 
 
+//Route::get('posts',[PostsController::class,'index'])->middleware('auth:api');
+Route::get('posts',[PostsController::class,'index']);
+
+
 
 //Route::middleware('auth:api')->group( function(){
 Route::middleware('auth')->group( function(){
 
-        Route::get('posts',[PostsController::class,'index']);
         Route::get('posts/{id}',[PostsController::class,'update']);
         Route::post('posts',[PostsController::class,'store']);
         Route::delete('posts/{id}',[PostsController::class,'destroy']);

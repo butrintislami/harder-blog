@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('replies', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('thread_id');
-            $table->foreignId('user_id');
-            $table->string('comment');
-            $table->timestamps();
+        Schema::create('users_courses', function (Blueprint $table) {
+            $table->integer('user_id')->unsigned();
+            $table->integer('course_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+
         });
+
     }
 
     /**
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('replies');
+        Schema::dropIfExists('courses');
     }
 };

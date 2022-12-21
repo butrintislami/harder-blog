@@ -45,10 +45,14 @@ return [
             'provider'=>'users',
             'hash'=>'false',
         ],
-
         'admin'=>[
             'driver'=>'jwt',
             'provider'=>'admins',
+            'hash'=>'false',
+        ],
+        'instructor'=>[
+            'driver'=>'jwt',
+            'provider'=>'instructors',
             'hash'=>'false',
         ],
 
@@ -75,6 +79,14 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+        'instructors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Instructor::class,
         ],
 
         // 'users' => [
