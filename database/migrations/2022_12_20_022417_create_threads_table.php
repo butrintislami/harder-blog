@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('threads', function (Blueprint $table) {
             $table->id();
             $table->foreignId('instructor_id');
-            $table->string('title');
-            $table->string('description',300);
+            $table->foreignId('course_id');
+            $table->string('thread');
+            $table->string('information',600);
             $table->timestamps();
         });
     }

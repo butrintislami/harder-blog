@@ -11,12 +11,17 @@ class Threads extends Model
 
     protected $fillable = [
         'instructor_id',
-        'title',
-        'description',
+        'course_id',
+        'thread',
+        'information',
     ];
 
     public function instructor(){
-        return $this->hasOne(Instructor::class);
+        return $this->belongsTo(Instructor::class);
+    }
+
+    public function course(){
+        return $this->belongsTo(Course::class);
     }
 
     public function replies(){

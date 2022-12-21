@@ -16,7 +16,7 @@ class Replies extends Model
 
     ];
 
-    public function thread(){
+    public function threads(){
         return $this->belongsTo(Threads::class);
     }
     public function user(){

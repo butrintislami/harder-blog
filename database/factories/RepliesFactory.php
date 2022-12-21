@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Posts;
+use App\Models\Threads;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
@@ -19,10 +20,10 @@ class RepliesFactory extends Factory
    public function definition()
     {
         $user_id = User::pluck('id')->toArray();
-        $post_id = Posts::pluck('id')->toArray();
+        $thread_id = Threads::pluck('id')->toArray();
         return [
             'user_id'=> Arr::random($user_id),
-            'post_id'=> Arr::random($post_id),
+            'thread_id'=> Arr::random($thread_id),
             'comment'=>$this->faker->sentence(),
 
         ];

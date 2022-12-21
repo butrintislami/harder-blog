@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Course;
 use App\Models\Instructor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
@@ -19,10 +20,12 @@ class ThreadsFactory extends Factory
     public function definition()
     {
         $instructor_id = Instructor::pluck('id')->toArray();
+        $course_id = Course::pluck('id')->toArray();
         return [
             'instructor_id'=> Arr::random($instructor_id),
-            'title'=> $this->faker->sentence(),
-            'description'=>$this->faker->paragraph(4),
+            'course_id'=> Arr::random($course_id),
+            'thread'=> $this->faker->sentence(),
+            'information'=>$this->faker->paragraph(4),
 
         ];
     }
