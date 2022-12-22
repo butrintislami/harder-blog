@@ -15,13 +15,7 @@ class ThreadsController extends Controller
 
     public function index()
     {
-        $id=auth()->id();
-//        $course=Course::findOrFail($cou);
-        $user=User::findOrFail($id);
-        return $user-course()->title();
-//            if(){
-//                return Threads::all();
-//            }
+
     }
 
     public function store(Request $request,$cou){
@@ -42,26 +36,6 @@ class ThreadsController extends Controller
     }
 
 
-    public function destroy($id){
-        try{
-            $uid=auth()->id();
-            $thread=Threads::findOrfail($id);
-            $user=User::findOrfail($uid);
-
-
-            if ($thread->user_id==auth()->id() OR $user->role=='admin'){
-                $thread->delete();
-                return response()->json(['status'=>'success','message'=>'Thread deleted successfully']);
-
-            }else{
-                return response()->json(['status'=>'fail','message'=>'You do not have access to delete this post']);
-
-            }
-
-        }catch(\Exception $e){
-            return response()->json(['status'=>'fail','message'=>$e->getmessage()]);
-        }
-    }
 
 
 
