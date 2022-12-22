@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 
 use App\Models\Course;
+use App\Models\CourseUser;
 use App\Models\Instructor;
 use App\Models\Replies;
 use App\Models\Threads;
@@ -55,7 +56,7 @@ class DatabaseSeeder extends Seeder
         Course::factory(10)->create();
         Threads::factory(10)->create();
         Replies::factory(10)->create();
-        UsersCourses::factory(5)->create();
+        CourseUser::factory(5)->create();
 
 
     }

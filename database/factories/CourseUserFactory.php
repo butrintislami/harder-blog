@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CourseUser>
  */
-class UsersCoursesFactory extends Factory
+class CourseUserFactory extends Factory
 {
     /**
      * Define the model's default state.

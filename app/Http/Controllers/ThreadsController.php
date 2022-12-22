@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Threads;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,15 +15,22 @@ class ThreadsController extends Controller
 
     public function index()
     {
-        return Threads::all();
+        $id=auth()->id();
+//        $course=Course::findOrFail($cou);
+        $user=User::findOrFail($id);
+        return $user-course()->title();
+//            if(){
+//                return Threads::all();
+//            }
     }
 
-    public function store(Request $request){
+    public function store(Request $request,$cou){
         try{
             $thread=new Threads();
-            $thread->user_id=auth()->id();
-            $thread->title= $request->title;
-            $thread->description= $request->description;
+            $thread->instructor_id=auth()->id();
+            $thread->course_id=$cou;
+            $thread->thread= $request->thread;
+            $thread->information= $request->information;
 
             if($thread->save()){
                 return response()->json(['status'=>'success','message'=>'Thread created successfully']);
@@ -37,7 +45,7 @@ class ThreadsController extends Controller
     public function destroy($id){
         try{
             $uid=auth()->id();
-            $post=Threads::findOrfail($id);
+            $thread=Threads::findOrfail($id);
             $user=User::findOrfail($uid);
 
 

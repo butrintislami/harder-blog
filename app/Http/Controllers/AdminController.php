@@ -55,7 +55,7 @@ class AdminController extends Controller
             JWTAuth::invalidate(JWTAuth::parseToken($request->token));
             return response()->json([
                 "success"=>true,
-                "message"=>"logout success"
+                "message"=>"logout successful"
             ]);
         }catch (Exception $exception){
             return response()->json([
