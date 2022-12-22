@@ -38,7 +38,6 @@ Route::post('course/{id}/thread',[ThreadsController::class,'store'])->middleware
 
 //---------------------------NOT FINISHED YET----------------------//
 //Student can view threads of the course they enrolled
-//Route::get('course/{id}/threads',[ThreadsController::class,'index']);
 Route::get('course/threads',[ThreadsController::class,'index']);
 //---------------------------NOT FINISHED YET----------------------//
 

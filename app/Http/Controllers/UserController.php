@@ -17,7 +17,7 @@ class UserController extends Controller
         $user->save();
 
         $course=Course::findOrfail($cou);
-        $user->course()->attach($course);
+        $user->courses()->attach($course);
             if(true){
                 return response()->json(['status'=>'success','message'=>'You have successfully joined this course']);
             }else{

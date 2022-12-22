@@ -15,6 +15,12 @@ class ThreadsController extends Controller
 
     public function index()
     {
+        $uid=Auth::id();
+        $user=User::findOrFail($uid);
+       foreach($user->courses as $course){
+           return $course->threads;
+       }
+
 
     }
 
