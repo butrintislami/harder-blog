@@ -15,6 +15,9 @@ class ThreadsController extends Controller
 
     public function index()
     {
+        //neser pe provojna me bo ni parameter n`url,me
+        // kallxu cilit postim dojm mi ja kqyr threadsat,
+        // e bojm nese courseId=User->course_id bla bla ather return $course->threads shimi se rash me flejt
         $uid=Auth::id();
         $user=User::findOrFail($uid);
        foreach($user->courses as $course){
@@ -25,21 +28,24 @@ class ThreadsController extends Controller
     }
 
     public function store(Request $request,$cou){
-        try{
-            $thread=new Threads();
-            $thread->instructor_id=auth()->id();
-            $thread->course_id=$cou;
-            $thread->thread= $request->thread;
-            $thread->information= $request->information;
 
-            if($thread->save()){
-                return response()->json(['status'=>'success','message'=>'Thread created successfully']);
+            $course=Course::findOrFail($cou);
+            if($course->instructor_id==Auth::id()){
+                $thread=new Threads();
+                $thread->instructor_id=auth()->id();
+                $thread->course_id=$cou;
+                $thread->thread= $request->thread;
+                $thread->information= $request->information;
+            $thread->save();
+                 return response()->json(['status'=>'success','message'=>'Thread created successfully']);
+
+            }else{
+                return response()->json(['status'=>'fail','message'=>'You are only allowed to create threads in your own courses']);
+
             }
 
-        }catch(\Exception $e){
-            return response()->json(['status'=>'fail','message'=>$e->getmessage()]);
+
         }
-    }
 
 
 
