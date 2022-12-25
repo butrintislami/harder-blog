@@ -15,9 +15,6 @@ class ThreadsController extends Controller
 
     public function index()
     {
-        //neser pe provojna me bo ni parameter n`url,me
-        // kallxu cilit postim dojm mi ja kqyr threadsat,
-        // e bojm nese courseId=User->course_id bla bla ather return $course->threads shimi se rash me flejt
         $uid=Auth::id();
         $user=User::findOrFail($uid);
        foreach($user->courses as $course){

@@ -36,10 +36,8 @@ Route::put('course/{id}',[UserController::class,'create'])->middleware('auth:api
 Route::post('course/{id}/thread',[ThreadsController::class,'store'])->middleware('auth:instructor');
 
 
-//---------------------------NOT FINISHED YET----------------------//
 //Student can view threads of the course they enrolled
 Route::get('course/threads',[ThreadsController::class,'index']);
-//---------------------------NOT FINISHED YET----------------------//
 
 //Admin can delete a course
 Route::delete('course/{id}',[CourseController::class,'destroy'])->middleware('auth:admin');
